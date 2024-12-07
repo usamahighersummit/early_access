@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import { ArrowRight, Mail, CheckCircle2, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
-// Initialize EmailJS with your public key
-emailjs.init(process.env.REACT_APP_EMAILJS_PK); // Replace with your actual public key
+// Initialize EmailJS
+emailjs.init("wq466uVBRSDmwOr4V");
 
 const CustomAlert = ({ variant = "default", children }) => {
   const styles = {
     default: "bg-gray-50 border-gray-200 text-gray-800",
     destructive: "bg-red-50 border-red-200 text-red-800",
-    success: "bg-gradient-to-r from-green-50 to-emerald-50 border-green-200 text-green-800",
+    success: "bg-purple-50 border-purple-200 text-purple-800",
   };
 
   return (
     <div className={`flex items-center p-4 rounded-lg border ${styles[variant]}`}>
       {variant === "destructive" && <AlertCircle className="h-5 w-5 text-red-600 mr-2" />}
-      {variant === "success" && <CheckCircle2 className="h-5 w-5 text-green-600 mr-2" />}
+      {variant === "success" && <CheckCircle2 className="h-5 w-5 text-purple-600 mr-2" />}
       <div>{children}</div>
     </div>
   );
@@ -40,14 +40,11 @@ const EarlyAccessPage = () => {
 
     setLoading(true);
     try {
-      // Send notification to stakeholders
-      const result = await emailjs.send(
-        "service_oqg80pa", // Replace with your EmailJS service ID
-        "template_8dinhpl", // Replace with your EmailJS template ID
-        {
-          user_email: email,
-        }
-      );
+      const result = await emailjs.send("service_z996bcy", "template_lfdxgop", {
+        user_email: email,
+        signup_time: new Date().toLocaleString(),
+        source: "Early Access Landing Page Alternative",
+      });
 
       if (result.status === 200) {
         setSubmitted(true);
@@ -65,68 +62,81 @@ const EarlyAccessPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-xl">
-        <div className="text-center relative">
-          {/* Decorative elements */}
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl" />
-          <div className="absolute -top-4 left-1/4 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
-          <div className="absolute -top-4 right-1/4 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl" />
+    <div className="min-h-screen bg-[#4A2A5D] flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+      {/* Main Card Container */}
+      <div className="w-full max-w-xl bg-white rounded-3xl p-8 sm:p-12 shadow-xl">
+        {/* Early Access Badge */}
+        <div className="text-center mb-8">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-[#4A2A5D]/10 text-[#4A2A5D] text-sm font-medium">Early Access Now Open</span>
+        </div>
 
-          <div className="relative space-y-8 bg-white/70 backdrop-blur-sm p-8 rounded-3xl shadow-xl">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">Early Access Now Open</span>
+        {/* Title Section */}
+        <div className="text-center space-y-4 mb-8">
+          <h1 className="text-4xl sm:text-5xl font-bold">
+            <span className="text-gray-900">
+              Master Science
+              <br />
+              Through
+            </span>
+            <span className="block text-[#4A2A5D] mt-2">Smart Learning</span>
+          </h1>
 
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Master Science Through
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mt-2">Smart Learning</span>
-            </h1>
+          <p className="text-lg text-gray-600">
+            Revolutionizing science education with spaced retrieval learning. Join our early access program to transform how you learn and retain
+            knowledge.
+          </p>
+        </div>
 
-            <p className="text-lg sm:text-xl leading-8 text-gray-600 max-w-2xl mx-auto">
-              Revolutionizing science education with spaced retrieval learning. Our platform helps students retain knowledge longer and understand
-              concepts deeper.
-            </p>
-
-            <div className="mt-8">
-              {!submitted ? (
-                <form onSubmit={handleSubmit}>
-                  <div className="flex flex-col sm:flex-row gap-4 p-2 bg-white rounded-2xl shadow-lg">
-                    <div className="relative flex-grow">
-                      <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
-                        className="block w-full rounded-xl border border-gray-200 pl-10 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        disabled={loading}
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:from-blue-500 hover:to-purple-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {loading ? (
-                        <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      ) : (
-                        <>
-                          Get Early Access
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                  {error && (
-                    <div className="mt-4">
-                      <CustomAlert variant="destructive">{error}</CustomAlert>
-                    </div>
+        {/* Form Section */}
+        <div className="mb-8">
+          {!submitted ? (
+            <form onSubmit={handleSubmit}>
+              <div className="flex flex-col sm:flex-row gap-4 p-2 bg-white rounded-2xl shadow-sm border border-gray-100">
+                <div className="relative flex-grow">
+                  <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="block w-full rounded-xl border border-gray-200 pl-10 py-3 text-gray-900 focus:ring-2 focus:ring-[#4A2A5D] focus:border-[#4A2A5D]"
+                    disabled={loading}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="inline-flex items-center justify-center rounded-xl bg-[#4A2A5D] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#5d3574] focus:outline-none focus:ring-2 focus:ring-[#4A2A5D] focus:ring-offset-2 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      Get Early Access
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </>
                   )}
-                </form>
-              ) : (
-                <CustomAlert variant="success">Thanks for signing up! We'll notify you when we launch.</CustomAlert>
+                </button>
+              </div>
+              {error && (
+                <div className="mt-4">
+                  <CustomAlert variant="destructive">{error}</CustomAlert>
+                </div>
               )}
+            </form>
+          ) : (
+            <CustomAlert variant="success">Thanks for signing up! We'll notify you when we launch.</CustomAlert>
+          )}
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-2 gap-4 text-center">
+          {["Personalized Learning Path", "Smart Study Schedules", "Enhanced Memory Retention", "Progress Tracking"].map((feature, index) => (
+            <div key={index} className="p-4 rounded-xl bg-[#4A2A5D]/5 border border-[#4A2A5D]/10">
+              <CheckCircle2 className="h-5 w-5 text-[#4A2A5D] mx-auto mb-2" />
+              <span className="text-sm text-gray-700">{feature}</span>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
