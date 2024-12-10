@@ -87,7 +87,7 @@ const EarlyAccessPage = () => {
 
   return (
     <div className="min-h-screen bg-[#4A2A5D] flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-3xl bg-white rounded-3xl p-8 sm:p-12 shadow-xl">
+      <div className="w-full max-w-[53rem] bg-white rounded-3xl p-8 sm:p-12 shadow-xl">
         {/* Early Access Badge */}
         {/* <div className="text-center mb-8">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#4A2A5D]/10 text-[#4A2A5D] text-sm font-medium">
@@ -125,24 +125,6 @@ const EarlyAccessPage = () => {
         <div className="mb-12">
           {/* Benefits Grid - Two Columns */}
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {/* Benefits for Students */}
-            <div>
-              <h3 className="text-xl font-semibold text-[#4A2A5D] mb-3">Benefits for Students</h3>
-              <ul className="space-y-2">
-                {[
-                  "Knowledge stays fresh throughout the course",
-                  "No more overwhelming revision before exams",
-                  "Build confidence through regular success",
-                  "Learn at their own pace",
-                ].map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-[#4A2A5D] mt-1 mr-2 flex-shrink-0" />
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* Benefits for Teachers */}
             <div>
               <h3 className="text-xl font-semibold text-[#4A2A5D] mb-3">Benefits for Teachers</h3>
@@ -152,6 +134,24 @@ const EarlyAccessPage = () => {
                   "Clear data on knowledge retention",
                   "Evidence of retrieval practice for SLT",
                   "Minimal time to manage",
+                ].map((benefit, index) => (
+                  <li key={index} className="flex items-start">
+                    <CheckCircle2 className="h-5 w-5 text-[#4A2A5D] mt-1 mr-2 flex-shrink-0" />
+                    <span className="text-gray-700">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Benefits for Students */}
+            <div>
+              <h3 className="text-xl font-semibold text-[#4A2A5D] mb-3">Benefits for Students</h3>
+              <ul className="space-y-2">
+                {[
+                  "Knowledge stays fresh throughout the course",
+                  "No more overwhelming revision before exams",
+                  "Build confidence through regular success",
+                  "Learn at their own pace",
                 ].map((benefit, index) => (
                   <li key={index} className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-[#4A2A5D] mt-1 mr-2 flex-shrink-0" />
