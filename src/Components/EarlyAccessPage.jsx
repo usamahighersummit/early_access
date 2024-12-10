@@ -97,7 +97,9 @@ const EarlyAccessPage = () => {
 
         {/* Title Section */}
         <div className="text-center space-y-4 mb-8">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">Build Lasting Knowledge: Effortless for Teachers, Effective for Students</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900" style={{ lineHeight: 1.2 }}>
+            Build Lasting Knowledge: Effortless for Teachers, Effective for Students
+          </h1>
           <p className="text-lg text-gray-600">
             Automated spaced retrieval that keeps knowledge fresh throughout the course, reducing revision stress and saving teacher time
           </p>
