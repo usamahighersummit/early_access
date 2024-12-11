@@ -101,7 +101,8 @@ const EarlyAccessPage = () => {
             Build Lasting Knowledge: Effortless for Teachers, Effective for Students
           </h1>
           <p className="text-lg text-gray-600">
-            Automated spaced retrieval that keeps knowledge fresh throughout the course, reducing revision stress and saving teacher time
+            Automated & personalised spaced retrieval that keeps knowledge fresh throughout the course, reducing revision stress, saving teacher time
+            and improving exam performance
           </p>
         </div>
 
@@ -153,7 +154,7 @@ const EarlyAccessPage = () => {
                   "Knowledge stays fresh throughout the course",
                   "No more overwhelming revision before exams",
                   "Build confidence through regular success",
-                  "Learn at their own pace",
+                  "Easy and effortless recall during exams",
                 ].map((benefit, index) => (
                   <li key={index} className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-[#4A2A5D] mt-1 mr-2 flex-shrink-0" />
@@ -165,7 +166,7 @@ const EarlyAccessPage = () => {
           </div>
 
           {/* Better Exam Performance - Perfectly Centered */}
-          <div className="w-1/2 mx-auto">
+          {/* <div className="w-1/2 mx-auto">
             <h3 className="text-xl font-semibold text-[#4A2A5D] mb-3">Better Exam Performance</h3>
             <ul className="space-y-2">
               {[
@@ -180,7 +181,7 @@ const EarlyAccessPage = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Form Section */}
@@ -189,7 +190,7 @@ const EarlyAccessPage = () => {
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col sm:flex-row gap-4 p-2 bg-white rounded-2xl shadow-sm border border-gray-100">
                 <div className="relative flex-grow">
-                  <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+                  <Mail className="absolute left-3 top-[1rem] h-5 w-5 text-gray-400" />
                   <input
                     type="email"
                     value={email}
@@ -225,9 +226,7 @@ const EarlyAccessPage = () => {
           )}
         </div>
 
-        <p className="text-center text-sm text-gray-600">
-          Join forward-thinking departments already preparing for September 2024. Limited places available.
-        </p>
+        <p className="text-center text-sm text-gray-600">Join forward-thinking departments already onboard. Limited places available.</p>
       </div>
     </div>
   );
